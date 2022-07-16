@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="main.puvg.member.dao.MemberDAO">
+	<select id="MemberSelect" parameterType ="membervo" resultType="membervo">
+	SELECT A.VNUM VNUM
+        ,A.VNAME VNAME
+        ,A.VEMAIL VEMAIL
+        ,A.VEMAIL2 VEMAIL2
+        ,A.VADDR VADDR
+        ,A.VADDR2 VADDR2
+        ,A.VPH VPH
+        ,A.VDEPT VDEPT
+        ,A.VRANK VRANK
+        ,A.VBIRTH VBIRTH
+        ,TO_CHAR(TO_DATE(A.VHIREDATE), 'YYYY-MM-DD') VHIREDATE
+        ,A.VDELETEYN VDELETEYN
+        ,A.VIMG VIMG
+	FROM PUVG_MEMBER A
+	WHERE A.VNUM = #{vnum}
+	</select>
+	
+	<insert id="MemberInsert" parameterType ="membervo">
+	INSERT INTO PUVG_MEMBER ( VNUM
+                        ,VNAME
+                        ,VEMAIL
+                        ,VEMAIL2
+                        ,VPW
+                        ,VADDR
+                        ,VADDR2
+                        ,VPH
+                        ,VDEPT
+                        ,VRANK
+                        ,VBIRTH
+                        ,VHIREDATE
+                        ,VDELETEYN
+                        ,VIMG
+                        ,VAUTHORITY )
+                VALUES ( #{vnum}
+                        ,#{vname}
+                        ,#{vemail}
+                        ,#{vemail2}
+                        ,#{vpw}
+                        ,#{vaddr}
+                        ,#{vaddr2}
+                        ,#{vph}
+                        ,#{vdept}
+                        ,#{vrank}
+                        ,#{vbirth}
+                        ,#{vhiredate}
+                        ,#{vdeleteyn}
+                        ,#{vimg}
+                        ,#{vauthority})
+	</insert>
+
+	<select id="MemberSelectAll" resultType="membervo">
+	SELECT * FROM (	
+			SELECT A.VNUM VNUM
+		        ,A.VNAME VNAME
+		        ,A.VEMAIL VEMAIL
+		        ,A.VEMAIL2 VEMAIL2
+		        ,A.VADDR VADDR
+		        ,A.VADDR2 VADDR2
+		        ,A.VPH VPH
+		        ,A.VDEPT VDEPT
+		        ,A.VRANK VRANK
+		        ,A.VBIRTH VBIRTH
+		        ,TO_CHAR(TO_DATE(A.VHIREDATE), 'YYYY-MM-DD') VHIREDATE
+		        ,A.VDELETEYN VDELETEYN
+		        ,A.VIMG VIMG
+		        ,A.VAUTHORITY VAUTHORITY
+		        ,CEIL(ROW_NUMBER() OVER(ORDER BY A.VNUM DESC)/ 15 ) NOWPAGE
+				,COUNT(A.VNUM) OVER() AS totalCount
+			FROM PUVG_MEMBER A )
+	WHERE NOWPAGE = #{nowpage}
+	</select>
+	
+	<update id="MemberUpdatepw" parameterType ="membervo">
+	UPDATE PUVG_MEMBER 
+	SET VPW = #{vpw} 
+	WHERE VNUM = #{vnum}
+	</update>
+	
+	<select id="MemberSelectAdmin" parameterType ="membervo" resultType="membervo">
+	SELECT A.VNUM VNUM
+        ,A.VNAME VNAME
+        ,A.VEMAIL VEMAIL
+        ,A.VEMAIL2 VEMAIL2
+        ,A.VADDR VADDR
+        ,A.VADDR2 VADDR2
+        ,A.VPH VPH
+        ,A.VDEPT VDEPT
+        ,A.VRANK VRANK
+        ,A.VBIRTH VBIRTH
+        ,TO_CHAR(TO_DATE(A.VHIREDATE), 'YYYY-MM-DD') VHIREDATE
+        ,A.VDELETEYN VDELETEYN
+        ,A.VIMG VIMG
+        ,A.VAUTHORITY VAUTHORITY
+	FROM PUVG_MEMBER A
+	WHERE A.VNUM = #{vnum}
+	</select>
+	
+	<update id="MemberUpdateImg" parameterType ="membervo">
+	UPDATE PUVG_MEMBER SET VNAME = #{vname}
+                    , VEMAIL = #{vemail}
+                    , VEMAIL2 = #{vemail2}
+                    , VADDR = #{vaddr}
+                    , VADDR2 = #{vaddr2}
+                    , VPH = #{vph}
+                    , VDEPT = #{vdept}
+                    , VRANK = #{vrank}
+                    , VBIRTH = #{vbirth}
+                    , VHIREDATE = #{vhiredate}
+                    , VDELETEYN = #{vdeleteyn}
+                    , VIMG = #{vimg}
+                    , VAUTHORITY = #{vauthority}
+    WHERE VNUM = #{vnum}
+	</update>
+	
+	<update id="MemberUpdate" parameterType ="membervo">
+	UPDATE PUVG_MEMBER SET VNAME = #{vname}
+                    , VEMAIL = #{vemail}
+                    , VEMAIL2 = #{vemail2}
+                    , VADDR = #{vaddr}
+                    , VADDR2 = #{vaddr2}
+                    , VPH = #{vph}
+                    , VDEPT = #{vdept}
+                    , VRANK = #{vrank}
+                    , VBIRTH = #{vbirth}
+                    , VHIREDATE = #{vhiredate}
+                    , VDELETEYN = #{vdeleteyn}
+                    , VAUTHORITY = #{vauthority}
+    WHERE VNUM = #{vnum}
+	</update>
+	
+	<select id="MemberSelectWork" resultType="membervo">
+	SELECT * FROM (	
+			SELECT A.VNUM VNUM
+		        ,A.VNAME VNAME
+		        ,A.VEMAIL VEMAIL
+		        ,A.VEMAIL2 VEMAIL2
+		        ,A.VADDR VADDR
+		        ,A.VADDR2 VADDR2
+		        ,A.VPH VPH
+		        ,A.VDEPT VDEPT
+		        ,A.VRANK VRANK
+		        ,A.VBIRTH VBIRTH
+		        ,TO_CHAR(TO_DATE(A.VHIREDATE), 'YYYY-MM-DD') VHIREDATE
+		        ,A.VDELETEYN VDELETEYN
+		        ,A.VIMG VIMG
+		        ,A.VAUTHORITY VAUTHORITY
+		        ,CEIL(ROW_NUMBER() OVER(ORDER BY A.VNUM DESC)/ 15 ) NOWPAGE
+				,COUNT(A.VNUM) OVER() AS totalCount
+			FROM PUVG_MEMBER A 
+			WHERE VDELETEYN = '근무')
+	WHERE NOWPAGE = #{nowpage}
+	
+	</select>
+	
+	<select id="MemberSearch" parameterType ="membervo" resultType="membervo">
+	SELECT * FROM (	
+		SELECT A.VNUM VNUM
+		        ,A.VNAME VNAME
+		        ,A.VEMAIL VEMAIL
+		        ,A.VEMAIL VEMAIL2
+		        ,A.VADDR VADDR
+		        ,A.VADDR2 VADDR2
+		        ,A.VPH VPH
+		        ,A.VDEPT VDEPT
+		        ,A.VRANK VRANK
+		        ,A.VBIRTH VBIRTH
+		        ,TO_CHAR(TO_DATE(A.VHIREDATE), 'YYYY-MM-DD') VHIREDATE
+		        ,A.VDELETEYN VDELETEYN
+		        ,A.VIMG VIMG
+		        ,A.VAUTHORITY VAUTHORITY
+		        ,CEIL(ROW_NUMBER() OVER(ORDER BY A.VNUM DESC)/ 15 ) NOWPAGE
+           		,COUNT(A.VNUM) OVER() AS totalCount
+		FROM PUVG_MEMBER A
+		WHERE A.VNAME LIKE '%' || #{vname} || '%')
+	WHERE NOWPAGE = #{nowpage}
+	</select>
+	
+	<select id="MemberSearchData" parameterType ="membervo" resultType="membervo">
+	SELECT * FROM (	
+	    SELECT A.VNUM VNUM
+	            ,A.VNAME VNAME
+	            ,A.VEMAIL VEMAIL
+	            ,A.VEMAIL VEMAIL2
+	            ,A.VADDR VADDR
+	            ,A.VADDR2 VADDR2
+	            ,A.VPH VPH
+	            ,A.VDEPT VDEPT
+	            ,A.VRANK VRANK
+	            ,A.VBIRTH VBIRTH
+	            ,TO_CHAR(TO_DATE(A.VHIREDATE), 'YYYY-MM-DD') VHIREDATE
+	            ,A.VDELETEYN VDELETEYN
+	            ,A.VIMG VIMG
+	            ,A.VAUTHORITY VAUTHORITY
+	            ,CEIL(ROW_NUMBER() OVER(ORDER BY A.VNUM DESC)/ 15 ) NOWPAGE
+	            ,COUNT(A.VNUM) OVER() AS totalCount
+	    FROM PUVG_MEMBER A
+	    WHERE 1=1
+    	<if test = "searchdept != 0">
+    		<![CDATA[AND A.VDEPT = #{vdept}]]>
+    	</if>
+	    <if test = "searchrank != 0">
+    		<![CDATA[AND A.VRANK = #{vrank}]]>
+    	</if>
+    	)
+	WHERE NOWPAGE = #{nowpage}
+	</select>
+</mapper>

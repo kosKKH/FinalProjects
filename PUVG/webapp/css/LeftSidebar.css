@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
+body{
+margin : 0;
+}
+
+.tabDiv1{
+width: 100vw;
+height : 50px;
+box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, .2);
+background : #fff;
+opacity: 0.5;
+position:fixed;
+}
+
+.tabDiv2{
+width:1000px;
+height : 50px;
+margin-left:auto;
+margin-right:auto;
+text-align:right;
+line-height:50px;
+position:fixed;
+left : 0;
+right : 0;
+z-index:1;
+}
+
+.tabSpan1{
+font-family: 'Noto Sans KR', sans-serif;
+font-size : 14pt;
+color : #6165f8;
+}
+
+.tabBtn1{
+background : #6165f8;
+color : #fff;
+border : 1px solid #6165f8;
+border-radius:5px;
+font-family: 'Noto Sans KR', sans-serif;
+font-size : 12pt;
+width : 120px;
+padding:5px;
+transition: 0.3s;
+transform:translateY(-150%);
+}
+
+.tabBtn1:hover{
+background : #2528f1;
+}
+
+.tabDiv3{
+width:300px;
+height : 50px;
+text-align:right;
+vertical-align: middle;
+right : 0;
+position:absolute;
+overflow:hidden;
+}
+
+.menu{
+width : 350px;
+height: 100vh;
+z-index:2;
+position:fixed;
+background : #6165f8;
+box-shadow: 10px 0px 10px 1px rgba(0, 0, 0, .1);
+}
+
+.menuImg{
+width:150px;
+height : auto;
+}
+
+.menu_img{
+text-align:center;
+margin-top:80px;
+margin-bottom:30px;
+}
+
+.menuCategory{
+width : 350px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.menuBig{
+font-family: 'Noto Sans KR', sans-serif;
+font-size : 20px;
+color : #fff;
+
+padding-left : 40px;
+padding-top:10px;
+padding-bottom:10px;
+transition: 0.3s;
+}
+.menuBig:hover{
+background:#8083f9;
+}
+.menuA{
+font-family: 'Noto Sans KR', sans-serif;
+font-size : 16px;
+color : #fff;
+text-decoration: none;
+}
+.menuA:hover{
+color : #00ffff;
+}
+
+.menuSmall1{
+width : 290px;
+height : 0px;
+padding-left : 60px;
+line-height:30px;
+transition: 0.5s;
+overflow:hidden;
+background : #9093fa;
+}
+.menuSmall2{
+width : 290px;
+height : 0px;
+padding-left : 60px;
+line-height:30px;
+overflow:hidden;
+transition: 0.5s;
+background : #9093fa;
+}
+
+.menuSmall3{
+width : 290px;
+height : 0px;
+padding-left : 60px;
+line-height:30px;
+overflow:hidden;
+transition: 0.5s;
+background : #9093fa;
+}
+
+.menuSmall4{
+width : 290px;
+height : 0px;
+padding-left : 60px;
+line-height:30px;
+overflow:hidden;
+transition: 0.5s;
+background : #9093fa;
+}
+
+.menuSmall5{
+width : 290px;
+height : 0px;
+padding-left : 60px;
+line-height:30px;
+transition: 0.5s;
+overflow:hidden;
+background : #9093fa;
+}

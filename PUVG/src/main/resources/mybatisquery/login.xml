@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="main.puvg.login.dao.LoginDAO">
+	<select id="LoginCheck" parameterType ="membervo" resultType="membervo">
+		SELECT A.VNUM VNUM
+		        ,A.VPW VPW
+		       	,A.VNAME VNAME
+		       	,A.VDEPT VDEPT
+		       	,A.VAUTHORITY VAUTHORITY
+		FROM PUVG_MEMBER A
+		WHERE A.VDELETEYN = '근무'
+		AND A.VNUM = #{vnum}
+		AND A.VPW = #{vpw}
+	</select>
+</mapper>
