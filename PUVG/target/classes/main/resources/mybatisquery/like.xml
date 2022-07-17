@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="main.puvg.board_like.dao.BoardLikeDAO">
+
+
+<select id="BoardLikeSelect" parameterType="boardlikevo" resultType="boardlikevo">	
+	
+		SELECT 	A.VBLNUM 	VBLNUM	
+		FROM 	PUVG_PBOARD_LIKE A
+		WHERE 	A.DELETEYN = 'Y' 
+		AND     A.VMNUM = #{vmnum}	
+		AND     A.VBNUM = #{vbnum}
+		
+</select>
+
+<select id="BoardLikeSelectAll" parameterType="boardlikevo" resultType="boardlikevo">	
+	
+		SELECT 	*
+		FROM 	PUVG_PBOARD_LIKE A
+		WHERE 	A.DELETEYN = 'Y' 
+		AND     A.VMNUM = #{vmnum}	
+		AND     A.VBNUM = #{vbnum}
+		
+</select>
+
+
+<insert id="BoardLikeInsert" parameterType="boardlikevo" >
+    
+	INSERT INTO PUVG_PBOARD_LIKE (	VBLNUM, 
+                                    VMNUM, 
+                                    VBNUM, 									
+									DELETEYN, 
+                                    INSERTDATE, 
+                                    UPDATEDATE)
+            				VALUES(	(SELECT NVL(MAX(VBLNUM), 0) + 1 AS VBLNUM FROM PUVG_PBOARD_LIKE), 
+	            					#{vmnum}, 
+	            					#{vbnum},  	            				 				
+	            					'Y', 
+	            					SYSDATE, 
+	            					SYSDATE)
+</insert>
+
+<update id="BoardLikeUpdate_1" parameterType="boardlikevo" >
+    
+	UPDATE 	PUVG_PBOARD_LIKE 
+	   SET  VBLIKE_CNT_1 = VBLIKE_CNT_1 + 1
+		   ,UPDATEDATE = SYSDATE
+	 WHERE  VMNUM = #{vmnum}
+	 AND    VBNUM = #{vbnum}
+	 
+</update>
+
+<update id="BoardLikeUpdate_2" parameterType="boardlikevo" >
+    
+	UPDATE 	PUVG_PBOARD_LIKE 
+	   SET  VBLIKE_CNT_2 = VBLIKE_CNT_2 + 1
+		   ,UPDATEDATE = SYSDATE
+	 WHERE  VMNUM = #{vmnum}
+	 AND    VBNUM = #{vbnum}
+	 
+</update>
+
+
+</mapper>      

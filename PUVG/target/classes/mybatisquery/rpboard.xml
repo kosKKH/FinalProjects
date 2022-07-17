@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="main.puvg.rpboard.dao.RpBoardDAO">
+
+<insert id="RpBoardInsert" parameterType="rpboardvo">
+	
+	INSERT INTO PUVG_RPBOARD( 	
+								VRPNUM, 
+								VBNUM, 
+								VNAME,
+	                           	VRPCONTENT,  
+	                           	DELETEYN,
+	                           	INSERTDATE
+	                        ) 
+	                  VALUES
+	                  		( 	
+	                  			#{vrpnum,  jdbcType=VARCHAR}, 
+	                  			#{vbnum,  jdbcType=VARCHAR}, 
+	                  			#{vname,  jdbcType=VARCHAR},
+	                          	#{vrpcontent,  jdbcType=VARCHAR},  
+	                          	'Y',
+	                          	SYSDATE
+	                        )
+	                        
+</insert>
+
+<select id="RpBoardSelectAll" parameterType="rpboardvo" resultType="rpboardvo">
+
+		SELECT 	A.VRPNUM 		VRPNUM
+		       ,A.VBNUM  		VBNUM
+		       ,A.VNAME 		VNAME
+		       ,A.VRPCONTENT 	VRPCONTENT	 
+               ,A.DELETEYN      DELETEYN
+	           ,A.INSERTDATE 	INSERTDATE
+		FROM 	PUVG_RPBOARD A
+		WHERE 	DELETEYN = 'Y' 
+		AND 	A.VBNUM = #{vbnum}
+		ORDER BY 1 DESC
+
+</select>
+
+<update id="RpBoardDelete" parameterType="rpboardvo">
+
+	UPDATE 	PUVG_RPBOARD 
+	SET 	DELETEYN = 'N', 
+			INSERTDATE = SYSDATE
+	WHERE 	DELETEYN = 'Y' 
+	AND 	VRPNUM = #{vrpnum}
+</update>
+</mapper>
