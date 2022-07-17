@@ -1,0 +1,173 @@
+@charset "UTF-8";
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+.MemInsertDiv1{
+width : 1000px;
+/*height : 800px;*/
+height : 1500px;
+border : 1px solid #eee;
+box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, .1);
+margin-left : auto;
+margin-right : auto;
+margin-bottom : 100px;
+background : #ececf6;
+}
+
+.MemInsertTable1{
+margin-left : auto;
+margin-right : auto;
+margin-bottom : 50px;
+margin-top : 50px;
+}
+
+.MemInsertTD1{
+height : 150px;
+text-align:center;
+}
+
+.MemInsertTD2{
+background : #ececf6;
+width : 400px;
+height : 50px;
+border-bottom:1px solid #333;
+}
+
+
+.MemInsertI1{
+font-family: 'Noto Sans KR', sans-serif;
+font-size : 12pt;
+width : 300px;
+height : 25px;
+border:none;
+color : #6165f8;
+background:#ececf6;
+padding : 10px;
+}
+
+.MemInsertI1:focus{
+outline:none;
+}
+
+.MemInsertI2{
+font-family: 'Noto Sans KR', sans-serif;
+font-size : 12pt;
+width : 100px;
+height : 25px;
+border:none;
+color : #6165f8;
+background:#ececf6;
+padding : 10px;
+margin-bottom:10px;
+}
+
+.MemInsertI2:focus{
+outline:none;
+}
+
+.MemInsertI3{
+font-family: 'Noto Sans KR', sans-serif;
+font-size : 12pt;
+width : 100px;
+height : 25px;
+border:none;
+color : #6165f8;
+background:#f7f7ff;
+padding : 10px;
+margin-top:5px;
+margin-bottom:5px;
+}
+
+.MemInsertI3:focus{
+outline:none;
+}
+
+.MemInsertI4{
+font-family: 'Noto Sans KR', sans-serif;
+font-size : 12pt;
+width : 400px;
+height : 25px;
+border:none;
+color : #6165f8;
+background:#f7f7ff;
+padding : 10px;
+margin-top:5px;
+margin-bottom:5px;
+}
+
+.MemInsertI4:focus{
+outline:none;
+}
+
+
+.MemInsertI1:focus{
+outline:none;
+}
+
+.MemInsertS1{
+width:120px;
+height : 40px;
+border:1px solid #333;
+font-family: 'Noto Sans KR', sans-serif;
+padding-left : 10px;
+background:#ececf6;
+}
+.MemInsertS1:focus{
+outline:none;
+}
+
+.MemInsertbtn2{
+font-family: 'Noto Sans KR', sans-serif;
+font-size:14pt;
+padding-left : 10px;
+background : #6165f8;
+color:#fff;
+border : none;
+padding-right:150px;
+padding-left:150px;
+padding-top:20px;
+padding-bottom:20px;
+}
+
+.MemInsertbtn2:focus{
+outline:none;
+}
+
+.MemInsertDiv2{
+text-align:center;
+}
+
+.fileIMG{
+font-family: 'Noto Sans KR', sans-serif;
+font-size:12pt;
+background : #ececf6;
+color:#6165f8;
+border : 1px solid #6165f8;
+border-radius:10px;
+padding-right:50px;
+padding-left:50px;
+padding-top:20px;
+padding-bottom:20px;
+}
+
+.MemInsertSpan1{
+font-size:12pt;
+padding:10px;
+}
+
+.MemInsertDiv3{
+width:300px;
+height : 400px;
+background : #333;
+margin-left:auto;
+margin-right:auto;
+}
+
+#photo {
+	max-width:300px;
+    max-height:400px;
+}

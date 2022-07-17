@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="main.puvg.schedule.dao.ScheduleDAO">
+	
+	<insert id="schedulInsert" parameterType="schedulevo">
+	INSERT INTO PUVG_SCHEDULE(
+	     VNUM  
+	    ,VDEPT
+	    ,VNAME 
+	    ,VSCALENDARNUM 
+	    ,VSNUM         
+	    ,VSNAME        
+	    ,VSSTART       
+	    ,VSEND         
+	    ,VSMEMO            
+	    ,INSERTDATE    
+	    ,UPDATEDATE    
+	    ,DELETEYN      
+	    ,VSPUBLIC      
+	    ,VSSTATUS
+	)
+	VALUES(
+	     #{vnum, jdbcType=VARCHAR}
+	    ,#{vdept, jdbcType=VARCHAR}
+	    ,#{vname, jdbcType=VARCHAR}
+	    ,#{vscalendarnum, jdbcType=VARCHAR}
+	    ,#{vsnum, jdbcType=VARCHAR}   
+	    ,#{vsname, jdbcType=VARCHAR}
+	    ,#{vsstart, jdbcType=VARCHAR}
+	    ,#{vsend, jdbcType=VARCHAR}
+	    ,#{vsmemo, jdbcType=VARCHAR}
+	    ,SYSDATE
+	    ,SYSDATE
+	    ,'Y'
+	    ,#{vspublic, jdbcType=VARCHAR}
+	    ,#{vsstatus, jdbcType=VARCHAR}
+	)
+	</insert>
+
+	<select id="scheduleBoardSelectAll" resultType="schedulevo">
+	SELECT
+	     VNUM  
+	    ,VDEPT
+	    ,VNAME 
+	    ,VSCALENDARNUM 
+	    ,VSNUM         
+	    ,VSNAME        
+	    ,VSSTART       
+	    ,VSEND         
+	    ,VSMEMO
+	    ,TO_CHAR(TO_DATE(INSERTDATE, 'YY.MM.DD HH24:MI:SS '))	AS INSERTDATE             
+	    ,TO_CHAR(TO_DATE(UPDATEDATE, 'YY.MM.DD HH24:MI:SS '))	AS UPDATEDATE   
+	    ,DELETEYN  
+	    ,VSPUBLIC        
+	    ,VSSTATUS
+	FROM PUVG_SCHEDULE
+	WHERE DELETEYN = 'Y'
+	AND VNUM = #{vnum, jdbcType=VARCHAR}
+	ORDER BY VSNUM DESC
+	</select>
+
+	<!-- 개인캘린더만 보기 -->
+	<select id="scheduleMain01" resultType="schedulevo">
+	SELECT
+	     VNUM  
+	    ,VDEPT
+	    ,VNAME 
+	    ,VSCALENDARNUM 
+	    ,VSNUM         
+	    ,VSNAME        
+	    ,VSSTART       
+	    ,VSEND          
+	    ,VSMEMO
+	    ,TO_CHAR(TO_DATE(INSERTDATE, 'YY.MM.DD HH24:MI:SS '))	AS INSERTDATE             
+	    ,TO_CHAR(TO_DATE(UPDATEDATE, 'YY.MM.DD HH24:MI:SS '))	AS UPDATEDATE   
+	    ,DELETEYN  
+	    ,VSPUBLIC      
+	    ,VSSTATUS
+	FROM PUVG_SCHEDULE
+	WHERE DELETEYN = 'Y'
+	AND VNUM = #{vnum, jdbcType=VARCHAR}
+	AND VSCALENDARNUM = '01'
+	ORDER BY VSNUM DESC
+	</select>
+	
+	<!-- 부서캘린더만 보기 -->
+	<select id="scheduleMain02" resultType="schedulevo">
+	SELECT
+	     VNUM  
+	    ,VDEPT
+	    ,VNAME 
+	    ,VSCALENDARNUM 
+	    ,VSNUM         
+	    ,VSNAME        
+	    ,VSSTART       
+	    ,VSEND          
+	    ,VSMEMO
+	    ,TO_CHAR(TO_DATE(INSERTDATE, 'YY.MM.DD HH24:MI:SS '))	AS INSERTDATE             
+	    ,TO_CHAR(TO_DATE(UPDATEDATE, 'YY.MM.DD HH24:MI:SS '))	AS UPDATEDATE   
+	    ,DELETEYN  
+	    ,VSPUBLIC      
+	    ,VSSTATUS
+	FROM PUVG_SCHEDULE
+	WHERE DELETEYN = 'Y'
+	AND VNUM = #{vnum, jdbcType=VARCHAR}
+	AND VSCALENDARNUM = '02'
+	ORDER BY VSNUM DESC
+	</select>
+	
+	<!-- 회사캘린더만 보기 -->
+	<select id="scheduleMain03" resultType="schedulevo">
+	SELECT
+	     VNUM  
+	    ,VDEPT
+	    ,VNAME 
+	    ,VSCALENDARNUM 
+	    ,VSNUM         
+	    ,VSNAME        
+	    ,VSSTART       
+	    ,VSEND          
+	    ,VSMEMO
+	    ,TO_CHAR(TO_DATE(INSERTDATE, 'YY.MM.DD HH24:MI:SS '))	AS INSERTDATE             
+	    ,TO_CHAR(TO_DATE(UPDATEDATE, 'YY.MM.DD HH24:MI:SS '))	AS UPDATEDATE   
+	    ,DELETEYN  
+	    ,VSPUBLIC      
+	    ,VSSTATUS
+	FROM PUVG_SCHEDULE
+	WHERE DELETEYN = 'Y'
+	AND VNUM = #{vnum, jdbcType=VARCHAR}
+	AND VSCALENDARNUM = '03'
+	ORDER BY VSNUM DESC
+	</select>
+	
+	<!-- 개인&부서 -->
+	<select id="scheduleMain12" resultType="schedulevo">
+	SELECT
+	     VNUM  
+	    ,VDEPT
+	    ,VNAME 
+	    ,VSCALENDARNUM 
+	    ,VSNUM         
+	    ,VSNAME        
+	    ,VSSTART       
+	    ,VSEND          
+	    ,VSMEMO
+	    ,TO_CHAR(TO_DATE(INSERTDATE, 'YY.MM.DD HH24:MI:SS '))	AS INSERTDATE             
+	    ,TO_CHAR(TO_DATE(UPDATEDATE, 'YY.MM.DD HH24:MI:SS '))	AS UPDATEDATE   
+	    ,DELETEYN  
+	    ,VSPUBLIC      
+	    ,VSSTATUS
+	FROM PUVG_SCHEDULE
+	WHERE DELETEYN = 'Y'
+	AND VNUM = #{vnum, jdbcType=VARCHAR}
+	AND VSCALENDARNUM != '03'
+	ORDER BY VSNUM DESC
+	</select>
+	
+	<!-- 개인&회사 -->
+	<select id="scheduleMain13" resultType="schedulevo">
+	SELECT
+	     VNUM  
+	    ,VDEPT
+	    ,VNAME 
+	    ,VSCALENDARNUM 
+	    ,VSNUM         
+	    ,VSNAME        
+	    ,VSSTART       
+	    ,VSEND          
+	    ,VSMEMO
+	    ,TO_CHAR(TO_DATE(INSERTDATE, 'YY.MM.DD HH24:MI:SS '))	AS INSERTDATE             
+	    ,TO_CHAR(TO_DATE(UPDATEDATE, 'YY.MM.DD HH24:MI:SS '))	AS UPDATEDATE   
+	    ,DELETEYN  
+	    ,VSPUBLIC      
+	    ,VSSTATUS
+	FROM PUVG_SCHEDULE
+	WHERE DELETEYN = 'Y'
+	AND VNUM = #{vnum, jdbcType=VARCHAR}
+	AND VSCALENDARNUM != '02'
+	ORDER BY VSNUM DESC
+	</select>
+
+	<!-- 개인&부서 -->
+	<select id="scheduleMain23" resultType="schedulevo">
+	SELECT
+	     VNUM  
+	    ,VDEPT
+	    ,VNAME 
+	    ,VSCALENDARNUM 
+	    ,VSNUM         
+	    ,VSNAME        
+	    ,VSSTART       
+	    ,VSEND         
+	    ,VSMEMO
+	    ,TO_CHAR(TO_DATE(INSERTDATE, 'YY.MM.DD HH24:MI:SS '))	AS INSERTDATE             
+	    ,TO_CHAR(TO_DATE(UPDATEDATE, 'YY.MM.DD HH24:MI:SS '))	AS UPDATEDATE   
+	    ,DELETEYN  
+	    ,VSPUBLIC      
+	    ,VSSTATUS
+	FROM PUVG_SCHEDULE
+	WHERE DELETEYN = 'Y'
+	AND VNUM = #{vnum, jdbcType=VARCHAR}
+	AND VSCALENDARNUM != '01'
+	ORDER BY VSNUM DESC
+	</select>
+	
+	
+	<select id="sheduleBoardSelect" resultType="schedulevo">
+	SELECT
+	     VNUM  
+	    ,VDEPT
+	    ,VNAME 
+	    ,VSCALENDARNUM 
+	    ,VSNUM         
+	    ,VSNAME        
+	    ,VSSTART       
+	    ,VSEND         
+	    ,VSMEMO
+	    ,TO_CHAR(TO_DATE(INSERTDATE, 'YY.MM.DD HH24:MI:SS '))	AS INSERTDATE             
+	    ,TO_CHAR(TO_DATE(UPDATEDATE, 'YY.MM.DD HH24:MI:SS '))	AS UPDATEDATE   
+	    ,DELETEYN  
+	    ,VSPUBLIC      
+	    ,VSSTATUS
+	FROM PUVG_SCHEDULE
+	WHERE DELETEYN = 'Y'
+	AND VSNUM = #{vsnum, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="sheduleBoardSerch" resultType="schedulevo">
+	SELECT
+	     VNUM  
+	    ,VDEPT 
+	    ,VNAME
+	    ,VSCALENDARNUM 
+	    ,VSNUM         
+	    ,VSNAME        
+	    ,VSSTART       
+	    ,VSEND         
+	    ,VSMEMO
+	    ,INSERTDATE             
+	    ,UPDATEDATE   
+	    ,DELETEYN  
+	    ,VSPUBLIC      
+	    ,VSSTATUS
+	FROM PUVG_SCHEDULE
+	WHERE DELETEYN = 'Y'
+	AND VSNAME LIKE '%' || #{vsname, jdbcType=VARCHAR} || '%'
+	</select>
+	
+	<insert id="sheduleBoardInsert" parameterType="schedulevo">
+	INSERT INTO PUVG_SCHEDULE(
+	     VNUM  
+	    ,VDEPT 
+	    ,VNAME
+	    ,VSCALENDARNUM 
+	    ,VSNUM         
+	    ,VSNAME        
+	    ,VSSTART       
+	    ,VSEND         
+	    ,VSMEMO            
+	    ,INSERTDATE    
+	    ,UPDATEDATE    
+	    ,DELETEYN      
+	    ,VSPUBLIC       
+	    ,VSSTATUS
+	)
+	VALUES(
+	     #{vnum, jdbcType=VARCHAR}
+	    ,#{vdept, jdbcType=VARCHAR}
+	    ,#{vname, jdbcType=VARCHAR} 
+	    ,#{vscalendarnum, jdbcType=VARCHAR}
+	    ,#{vsnum, jdbcType=VARCHAR}   
+	    ,#{vsname, jdbcType=VARCHAR}
+	    ,#{vsstart, jdbcType=VARCHAR}
+	    ,#{vsend, jdbcType=VARCHAR}
+	    ,#{vsmemo, jdbcType=VARCHAR}
+	    ,SYSDATE
+	    ,SYSDATE
+	    ,'Y'
+	    ,#{vspublic, jdbcType=VARCHAR}
+	    ,'01'
+	)
+	</insert>
+	
+	<!-- 가라데이터 -->
+	<select id="sheduleMemSerch" resultType="schedulememvo">
+	SELECT * FROM PUVG_SCHEDULEMEM WHERE VNAME LIKE '%' || #{vname, jdbcType=VARCHAR} || '%'
+	</select>
+	
+	<insert id="sheduleShareInsert" parameterType="schedulesharevo">
+	INSERT INTO PUVG_SCHEDULE_SHARE(
+	     VSNUM  
+	    ,SHARE1 
+	    ,SHARE2
+	    ,SHARE3 
+	    ,SHARE4         
+	    ,SHARE5        
+	    ,SHARE6       
+	    ,SHARE7         
+	    ,SHARE8       
+	    ,SHARE9   
+	    ,SHARE10            
+	    ,INSERTDATE    
+	    ,UPDATEDATE    
+	    ,DELETEYN      
+	)
+	VALUES(
+	     #{vsnum, jdbcType=VARCHAR}
+	    ,#{share1, jdbcType=VARCHAR} 
+	    ,#{share2, jdbcType=VARCHAR}
+	    ,#{share3, jdbcType=VARCHAR} 
+	    ,#{share4, jdbcType=VARCHAR}         
+	    ,#{share5, jdbcType=VARCHAR}        
+	    ,#{share6, jdbcType=VARCHAR}          
+	    ,#{share7, jdbcType=VARCHAR}         
+	    ,#{share8, jdbcType=VARCHAR}       
+	    ,#{share9, jdbcType=VARCHAR}   
+	    ,#{share10, jdbcType=VARCHAR}            
+	    ,SYSDATE   
+	    ,SYSDATE    
+	    ,'Y'
+	)
+	</insert>
+	
+	<update id="sheduleBoardUpdate" parameterType="schedulevo">
+		UPDATE PUVG_SCHEDULE SET 
+		     VSNAME = #{vsname, jdbcType=VARCHAR}
+		    ,VSSTART = #{vsstart, jdbcType=VARCHAR}      
+		    ,VSEND = #{vsend, jdbcType=VARCHAR}        
+		    ,VSMEMO = #{vsmemo, jdbcType=VARCHAR}
+		    ,UPDATEDATE = SYSDATE   
+		    ,VSPUBLIC = #{vspublic, jdbcType=VARCHAR}
+		    ,VSSTATUS = #{vsstatus, jdbcType=VARCHAR}
+		WHERE VSNUM = #{vsnum, jdbcType=VARCHAR} 
+		AND DELETEYN = 'Y' 
+	</update>
+	
+	<update id="scheduledDelete" parameterType="schedulevo">
+		UPDATE PUVG_SCHEDULE SET  
+			 UPDATEDATE = SYSDATE   
+		    ,DELETEYN = 'N' 
+		WHERE DELETEYN = 'Y'      
+		AND VSNUM = #{vsnum, jdbcType=VARCHAR} 
+		AND VNUM = #{vnum, jdbcType=VARCHAR} 
+	</update>
+	
+	<update id="scheduledUpdateStatus" parameterType="schedulevo">
+		UPDATE PUVG_SCHEDULE SET  
+			  VSSTATUS = #{vsstatus, jdbcType=VARCHAR} 
+			 ,UPDATEDATE = SYSDATE        
+		WHERE DELETEYN = 'Y'  
+		AND VSNUM = #{vsnum, jdbcType=VARCHAR} 
+		AND VNUM = #{vnum, jdbcType=VARCHAR} 
+	</update>
+	
+</mapper>
+

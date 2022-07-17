@@ -1,0 +1,307 @@
+@charset "UTF-8";
+
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
+  /* body 스타일 */
+
+/* 캘린더 위의 해더 스타일(날짜가 있는 부분) */
+
+  #calendar-container{
+  width : 800px;
+  margin-left : auto;
+  margin-right : auto;
+  }
+  
+.scheduleDiv1{
+width : 1000px;
+margin-left : auto;
+margin-right : auto;
+margin-bottom : 100px;
+border : 1px solid #eee;
+box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, .1);
+padding-bottom : 150px;
+}
+  
+  .scheduleDiv2{
+  text-align : center;
+  width : 800px;
+  margin-left : auto;
+  margin-right : auto;
+  margin-top : 50px;
+  margin-bottom : 50px;
+  position : relative;
+  }
+  
+  .scheduleDiv3{
+  position : relative;
+  margin-top:30px;
+  }
+  
+  .scheduleDiv4{
+  border : 1px solid #eee;
+  width : 340px;
+  height : 150px;
+  z-index : 2;
+  background:#fff;
+  position : absolute;
+  display : none;
+  line-height:25px;
+  border-radius:10px;
+  padding-left : 25px;
+  padding-top : 20px;
+  box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, .1);
+  transition:0.3s
+  }
+  
+  .schSpan1{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size : 12pt;
+  font-weight: 500;
+  color : #6165f8;
+  }
+  .schSpan4{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size : 12pt;
+  font-weight: 500;
+  color : #6165f8;
+  }
+  .schSpan2{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size : 11pt;
+  font-weight: 500;
+  }
+  
+  .schSpan3{
+  font-size : 9pt;
+    color : #6165f8;
+  }
+  
+  .schInput1{
+  background : #ececf6;
+  color : #6165f8;
+  border : none;
+  padding-top : 5px;
+  padding-bottom : 5px;
+  padding-left :10px;
+  border-radius:10px;
+  width : 200px;
+  margin-left : 10px;
+  }
+  
+  .schInput1:focus{
+  outline:none;
+  }
+  
+  .scheduleDiv6{
+  color : #6165f8;
+  font-size : 10pt;
+  text-align : center;
+  width : 50px;
+  position : absolute;
+  right : 10px;
+  }
+  
+  .schbtn1{
+  padding-left : 20px;
+  padding-right : 20px;
+  padding-top : 10px;
+  padding-bottom : 10px;
+  background : #6165f8;
+  color : #fff;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size : 14px;
+  border : none;
+  border-radius : 5px;
+  right : 20px;
+  bottom : 20px;
+  position : absolute;
+  transition : 0.3s;
+  }
+  
+  .schbtn1:hover{
+  background : #4044e2;
+  }
+  
+.scdSelect1{
+width : 70px;
+padding : 5px;
+border : 1px solid #6165f8;
+color:#6165f8;
+transation : 0.5s
+}
+.scdSelect1:focus{
+outline:none;
+}
+
+
+
+
+.scdSelect2{
+width : 70px;
+padding : 5px;
+border : 1px solid #6165f8;
+color:#6165f8;
+}
+.scdSelect2:focus{
+outline:none;
+}
+
+.scdSelect3{
+width : 70px;
+padding : 5px;
+border : 1px solid #6165f8;
+color:#6165f8;
+}
+.scdSelect3:focus{
+outline:none;
+}
+
+.scdSelect4{
+width : 70px;
+padding : 5px;
+border : 1px solid #6165f8;
+color:#6165f8;
+}
+.scdSelect4:focus{
+outline:none;
+}
+
+.scdSelect5{
+width : 70px;
+padding : 5px;
+border : 1px solid #6165f8;
+color:#6165f8;
+}
+.scdSelect5:focus{
+outline:none;
+}
+
+.schSpan5{
+font-size : 9pt;
+color : #acadb2;
+}
+
+.scheduleDiv5{
+padding-bottom : 15px;
+display : none;
+}
+
+.scheduleDiv7{
+margin-top:10px;
+width : 250px;
+margin-left : auto;
+margin-right : auto;
+}
+
+.scheduleDiv8{
+background : #6165f8;
+border-top:1px solid #7175f8;
+border-right:1px solid #7175f8;
+border-left:1px solid #7175f8;
+color : #fff;
+box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, .1);
+}
+.scheduleDiv9{
+padding-top:8px;
+padding-bottom:8px;
+padding-left : 20px;
+border-bottom:1px solid #7175f8;
+transition : 0.3s;
+}
+.scheduleDiv9:hover{
+background : #4044e2;
+}
+
+.scheduleDiv10{
+position : absolute;
+display : none;
+z-index : 2;
+width : 130px;
+margin-top:100px;
+}
+.schSpan6{
+font-weight: 700;
+float:right;
+margin-top : 5px;
+margin-right : 5px;
+}
+
+.schBtn2{
+width : 15px;
+height : 15px;
+border : 1px solid #6165f8;
+background : #6165f8;
+}
+
+.schBtn4{
+width : 15px;
+height : 15px;
+border : 1px solid #e14141;;
+background : #e14141;;
+}
+
+.schBtn5{
+width : 15px;
+height : 15px;
+border : 1px solid #47d66c;
+background : #47d66c;
+}
+
+
+.scdMtd1{
+width : 20px;
+height : 40px;
+text-align:center;
+}
+.scdMtd2{
+width : 70px;
+text-align:left;
+}
+
+.scdMtd3{
+width : 120px;
+text-align:left;
+}
+
+.schSpan7{
+font-family: 'Noto Sans KR', sans-serif;
+font-size : 14px;
+}
+
+.schBtn3{
+font-family: 'Noto Sans KR', sans-serif;
+font-size : 14px;
+color : #fff;
+background : #6165f8;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-right: 20px;
+padding-left: 20px;
+border-radius : 5px;
+border : none;
+transition : 0.4s;
+}
+.schBtn3:hover{
+background : #2528f1;
+}
+
+.schBtn3:focus{
+outline : none;
+}
+
+.scheduleDiv11{
+float:right;
+right : 0;
+top : 10px;
+position : absolute;
+}
+
+.scheduleDiv12{
+height:50px;
+}
+

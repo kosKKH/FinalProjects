@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="main.puvg.chart.dao.MemberChartDAO">
+	<select id="ChartData" resultType="chartvo">
+	SELECT (SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDEPT='총무부') AS affairs
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDEPT='인사부') AS personnel
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDEPT='영업부') AS sales
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDEPT='경영지원부') AS management
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDEPT='기술지원부') AS technical
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDEPT='기술개발부') AS develop
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDEPT='연구기획부') AS planning
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDEPT='생산관리부') AS production
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDEPT='품질관리부') AS quality
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDEPT='해외사업부') AS international
+	    
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VRANK='사장') AS persident
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VRANK='이사') AS director
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VRANK='부장') AS department
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VRANK='과장') AS manager
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VRANK='대리') AS engineer
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VRANK='주임') AS assistant
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VRANK='신입') AS clerk
+	    
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDELETEYN='근무') AS working
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDELETEYN='파견') AS dispatch
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDELETEYN='휴직') AS rest
+	    ,(SELECT COUNT(VNUM) FROM PUVG_MEMBER WHERE VDELETEYN='퇴사') AS leave
+	    
+	FROM PUVG_MEMBER
+	WHERE ROWNUM = 1
+	</select>
+</mapper>
